@@ -95,9 +95,9 @@ do
     3) dosya_yoneticisi ;;
     4) dosya_degistirme ;;
     5) performans_izleme ;;
-	6) veritabani_yedekleme;;
-    7) buyuk_dosyalari_sil;;
-    8) izin_ayarla;;
+    6) veritabani_yedekle ;;
+    7) buyuk_dosyalari_sil ;;
+    8) izin_ayarla ;;
     9) echo "Program sonlandırıldı." && exit ;;
     *) echo "Geçersiz seçim, lütfen tekrar deneyin." ;;
   esac
