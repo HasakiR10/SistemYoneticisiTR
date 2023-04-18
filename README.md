@@ -2,8 +2,11 @@
 
 ##**Nasıl Kullanılır?**
 > git clone https://github.com/HasakiR10/SistemYoneticisiTR.git
+
 > cd SistemYoneticisiTR/
+
 > chmod +x sistemtr.sh
+
 > ./sistemtr.sh
 
 Dosya sistemi tarama aracı: Bu özellik, sisteminizde belirli bir dosya veya klasörü aramanıza ve bulmanıza olanak tanır. Bu, büyük dosya veya klasörlerinizi bulmanıza ve silmenize veya taşımanıza yardımcı olabilir.
