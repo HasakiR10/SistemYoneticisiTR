@@ -2,6 +2,8 @@
 
 function menu {
   clear
+  echo "SistemYoneticisiTR Sistem Asistanı v1.2"
+  echo "https://github.com/HasakiR10/SistemYoneticisiTR"
   echo "Coded By Hasaki"
   echo "Lütfen yapmak istediğiniz işlemi seçin:"
   echo "1. Dosya sistemi tarama aracı"
@@ -12,7 +14,13 @@ function menu {
   echo "6. Veritabanı yedekleme aracı"
   echo "7. Belirli bir dosya boyutunu aşan dosyaları silme aracı"
   echo "8. Dosya veya klasör izinlerini ayarlama aracı"
-  echo "9. Çıkış"
+  echo "9. Dosyaları düzenleme tarihine göre sıralama"
+  echo "10. Sistem günlüğü izleyici"
+  echo "11. Hız testi aracı"
+  echo "12. Dosya şifreleme aracı"
+  echo "13. Dosya çözme aracı"
+  echo "14. Dosya kurtarma aracı"
+  echo "0. Çıkış"
   read -p "Seçim yapmak için numara girin: " choice
 }
 
@@ -86,6 +94,40 @@ function izin_ayarla {
   esac
 }
 
+function dosya_siralama {
+  read -p "Dosyaları hangi klasöre göre sıralamak istersiniz? " folder
+  ls -lt "$folder"
+}
+
+
+function sistem_izleyici {
+  tail -f /var/log/syslog | grep "critical"
+}
+
+function hiz_testi {
+  if ! command -v speedtest-cli &> /dev/null; then
+      echo "speedtest-cli yüklenmemiş, yükleniyor..."
+      sudo apt-get install speedtest-cli
+  fi
+  speedtest-cli
+}
+
+function dosya_sifreleme {
+  read -p "Şifrelenecek dosyanın adını girin: " dosya
+  gpg -c $dosya
+}
+
+function dosya_sifre_cozme {
+  read -p "Çözülecek dosyanın adını girin: " dosya
+  gpg -d $dosya
+}
+
+function dosya_kurtarma {
+  folder="/home/user/trash/"
+  read -p "Kurtarılacak dosyanın adını girin: " dosya
+  mv $folder$dosya /home/user/documents/
+}
+
 while true
 do
   menu
@@ -98,7 +140,13 @@ do
     6) veritabani_yedekle ;;
     7) buyuk_dosyalari_sil ;;
     8) izin_ayarla ;;
-    9) echo "Program sonlandırıldı." && exit ;;
+    9) dosya_siralama ;;
+    10) sistem_izleyici ;;
+    11) hiz_testi ;;
+    12) dosya_sifreleme ;;
+    13) dosya_sifre_cozme ;;
+    14) dosya_kurtarma ;;
+    0) echo "Program sonlandırıldı." && exit ;;
     *) echo "Geçersiz seçim, lütfen tekrar deneyin." ;;
   esac
   read -p "Devam etmek için herhangi bir tuşa basın..."
