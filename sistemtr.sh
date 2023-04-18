@@ -20,6 +20,8 @@ function menu {
   echo "12. Dosya şifreleme aracı"
   echo "13. Dosya çözme aracı"
   echo "14. Dosya kurtarma aracı"
+  echo "15. Kullanıcı takip aracı"
+  echo "16. Asistan güncelleme aracı"
   echo "0. Çıkış"
   read -p "Seçim yapmak için numara girin: " choice
 }
@@ -123,9 +125,23 @@ function dosya_sifre_cozme {
 }
 
 function dosya_kurtarma {
-  folder="/home/user/trash/"
-  read -p "Kurtarılacak dosyanın adını girin: " dosya
-  mv $folder$dosya /home/user/documents/
+  read -p "Kurtarma klasörünün tam yolunu girin: " kurtarma_klasoru
+  read -p "Kurtarılacak dosyanın tam yolunu girin: " dosya_yolu
+  read -p "Dosyanın nereye taşınacağını girin: " hedef_klasor
+  mv "$kurtarma_klasoru/$(basename "$dosya_yolu")" "$hedef_klasor/"
+}
+
+function kullanici_takip {
+  read -p "Kullanıcı adını girin: " user
+  login_time=$(last | grep $user | head -n 1 | awk '{print $4" "$5}')
+  echo "Kullanıcı oturum açtı: $login_time" >> /home/$user/login_time.txt
+}
+
+function asistan_guncelle() {
+  repository_url="https://github.com/HasakiR10/SistemYoneticisiTR.git"
+  git -C "$repository_url" pull
+  last_updated=$(git -C "$repository_url" log -1 --format="%cd" --date=short)
+  echo "Son güncelleme: $last_updated"
 }
 
 while true
@@ -146,6 +162,8 @@ do
     12) dosya_sifreleme ;;
     13) dosya_sifre_cozme ;;
     14) dosya_kurtarma ;;
+    15) kullanici_takip ;;
+    16) asistan_guncelle ;;
     0) echo "Program sonlandırıldı." && exit ;;
     *) echo "Geçersiz seçim, lütfen tekrar deneyin." ;;
   esac
