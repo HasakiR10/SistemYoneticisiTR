@@ -30,3 +30,13 @@ Ekstra Araçlar
 4. Dosya kurtarma aracı
 5. Kullanıcı takip aracı
 6. Asistan güncelleme aracı
+
+Gelişmiş Özellikler
+1. Otomatik Sistem Yeniden Başlatma
+2. Günlük Raporlama
+3. Ağ Bilgisi
+4. Otomatik Dosya Arşivleme
+5. Güvenlik Denetimleri
+6. Zamanlanmış Görevler
+7. Otomatik Veritabanı Bakımı
+8. Etkinlik Günlüğü İzleme
