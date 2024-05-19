@@ -1,4 +1,4 @@
-# SistemYoneticisiTR v1.2
+# SistemYoneticisiTR v1.3
 
 **Nasıl Kullanılır?**
 > git clone https://github.com/HasakiR10/SistemYoneticisiTR.git
