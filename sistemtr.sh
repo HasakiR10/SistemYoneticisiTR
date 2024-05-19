@@ -17,7 +17,7 @@ fi
 
 function menu {
   clear
-  echo -e "${BLUE}SistemYoneticisiTR Sistem Asistanı v1.2${RESET}"
+  echo -e "${BLUE}SistemYoneticisiTR Sistem Asistanı v1.3${RESET}"
   echo -e "${CYAN}https://github.com/HasakiR10/SistemYoneticisiTR${RESET}"
   echo -e "${CYAN}En son sürüm: $LATEST_RELEASE${RESET}"
   echo -e "${GREEN}Coded By Hasaki${RESET}"
